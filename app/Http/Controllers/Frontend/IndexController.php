@@ -30,7 +30,7 @@ class IndexController extends Controller
 
 
 
-    public function ServicesDetails($id,$slug){
+    public function ServicesDetails($id){
 		Services::find($id)->increment('views');
 		$services = Services::findOrFail($id);
 

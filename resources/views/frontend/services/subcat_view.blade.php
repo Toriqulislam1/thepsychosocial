@@ -11,7 +11,7 @@
 
 
 
-<div class="row upset ">
+<div  style="margin-bottom: 100px;" class="row upset ">
 
 			  {{-- @php
 		$services = App\Models\Services::orderBy('content_title','desc')->get();

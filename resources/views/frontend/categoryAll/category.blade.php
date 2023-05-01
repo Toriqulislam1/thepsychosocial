@@ -10,7 +10,7 @@
 							<div class="col-lg-6">
 								<div class="common-heading ptag">
 
-									<h2>Category</h2>
+									<!--<h2>Category</h2>-->
 
 								</div>
 							</div>

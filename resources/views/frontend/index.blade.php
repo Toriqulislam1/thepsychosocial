@@ -14,7 +14,7 @@ intertrade
        <div class="swiper-wrapper">
           @php
 
-          $slider = App\Models\slide::orderBy('id','desc')->get();
+          $slider = App\Models\slide::latest()->get();
 
           @endphp
 
@@ -23,13 +23,14 @@ intertrade
          <div class="swiper-slide">
              <a href="{{ $item->slide_link}}">
                 <div class="slide-inner slide-bg-image"  data-background=" {{asset($item->slide_photo)}}">
+
                     <div class="container">
                        <div data-swiper-parallax="300" class="slide-title">
-                          <h2>{{ $item->slide_title}}</h2>
+                          <h2 style="width:50px">{{ $item->slide_title}}</h2>
                        </div>
-                       <div data-swiper-parallax="400" class="slide-text">
+                       {{--  <div data-swiper-parallax="400" class="slide-text">
                           <p>{!! Str::limit($item->slide_description, 50)  !!}</p>
-                       </div>
+                       </div>  --}}
                        <div class="clearfix"></div>
                     </div>
                  </div>
@@ -92,9 +93,11 @@ CELL: +8801535880909
     					<div class="items" style="text-align: center"><img src="{{ asset($item->client_logo)}}" alt="clients" class="img100w">
     					</div>
                     </a>
+                    <a style="text-decoration:none; width:100px" href="{{$item->client_title}}" target="blank">
                     <span>{{$item->orginal_title}}</span>
+                </a>
                 </div>
-               
+
 					@endforeach
 				</div>
 
@@ -103,10 +106,43 @@ CELL: +8801535880909
 
 		</div>
 
+{{-- mobile product show with carousl --}}
+
+
+@php
+        $Services = App\Models\Services::orderBy('id','desc')->get();
+ @endphp
+	<div class="container mobileView">
+
+		<div class="weworkfor pt20 pb20 dark-bg2">
+			<div class="container">
+
+				<div class="logo-weworkfor owl-carousel">
+				@foreach($Services as $item)
+                <div style="display:flex;flex-direction: column;">
+                    <a href="{{route('serviceDetails', $item->id)}}" target="blank">
+    					<div class="items" style="text-align: center"><img src="{{ asset($item->thamble)}}" alt="clients" class="img100w">
+    					</div>
+                    </a>
+                    <a style="text-decoration:none; width:100px" href="{{route('serviceDetails', $item->id)}}" target="blank">
+                    <span>{{$item->content_slide_title}}</span>
+                </a>
+                </div>
+
+					@endforeach
+				</div>
+
+			</div>
+		</div>
+
+		</div>
+
+{{--end mobile product show with carousl --}}
+
 
 
 	<!--Start Service-->
-	  <section class="dg-service2 pb120 pt0" id="services">
+	  {{--  <section class="dg-service2 pb120 pt0" id="services">
 		<div class="container">
 		<div class="row justify-content-center">
 							<div class="col-lg-6">
@@ -146,7 +182,7 @@ CELL: +8801535880909
           <a href="{{route('all-services')}}" class="btn-outline">View More Services<i class="fas fa-chevron-right fa-icon"></i></a>
         </div>
       </div>
-	</section>
+	</section>  --}}
 
 
 	<!--End Service-->
@@ -166,25 +202,142 @@ CELL: +8801535880909
 							</div>
 				<div class="row upset ">
 
-					@php
+					{{--  @php
 					$services = App\Models\Services::where('category_id','12')->limit(4)->get();
-					@endphp
+					@endphp  --}}
 
-				@foreach($services as $item)
+				{{--  @foreach($services as $item)  --}}
+
+						{{-- SteelWaste product 1  --}}
 					<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
 						<div class="s-block up-hor">
 							<div class="nn-card-set">
-							<a href="{{ url('services/details/'.$item->id.'/'.$item->content_title ) }}">
-								<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset($item->thamble) }}" alt="service" class="img-fluid" /></div>
+							<a href="https://intertradebd.com/services/subcategory/48/zinc-ash-(induction-furnace-dust)">
+								<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/SteelWaste/1.Zinc Ash.jpg') }}" alt="service" class="img-fluid" /></div>
 								<div class="p-3">
-									<h6>{{ $item->content_title}}</h6>
+									<h6>Zinc Ash</h6>
 									Learn More <i class="fas fa-chevron-right fa-icon"></i>
 								</div>
 							</a>
 							</div>
 						</div>
 					</div>
-					@endforeach
+					{{-- end SteelWaste product 1  --}}
+						{{-- SteelWaste product 2  --}}
+					<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+						<div class="s-block up-hor">
+							<div class="nn-card-set">
+							<a href="https://intertradebd.com/services/subcategory/48/zinc-ash-(induction-furnace-dust)">
+								<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/SteelWaste/2. Test Report Zinc Ash.jpg') }}" alt="service" class="img-fluid" /></div>
+								<div class="p-3">
+									<h6>Test Report Zinc Ash</h6>
+									Learn More <i class="fas fa-chevron-right fa-icon"></i>
+								</div>
+							</a>
+							</div>
+						</div>
+					</div>
+					{{-- end SteelWaste product 2  --}}
+
+{{-- SteelWaste product 3  --}}
+<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+	<div class="s-block up-hor">
+		<div class="nn-card-set">
+		<a href="https://intertradebd.com/services/subcategory/49/eafd-(electric-arc-furnace-dust)">
+			<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/SteelWaste/3. EAF Dust.jpg') }}" alt="service" class="img-fluid" /></div>
+			<div class="p-3">
+				<h6>EAF Dust</h6>
+				Learn More <i class="fas fa-chevron-right fa-icon"></i>
+			</div>
+		</a>
+		</div>
+	</div>
+</div>
+{{-- end SteelWaste product 3  --}}
+
+
+{{-- SteelWaste product 4  --}}
+<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+	<div class="s-block up-hor">
+		<div class="nn-card-set">
+		<a href="https://intertradebd.com/services/subcategory/49/eafd-(electric-arc-furnace-dust)">
+			<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/SteelWaste/4. Test Report EAFD.jpg') }}" alt="service" class="img-fluid" /></div>
+			<div class="p-3">
+				<h6>Test Report EAFD</h6>
+				Learn More <i class="fas fa-chevron-right fa-icon"></i>
+			</div>
+		</a>
+		</div>
+	</div>
+</div>
+{{-- end SteelWaste product 4  --}}
+
+{{-- SteelWaste product 5  --}}
+<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+	<div class="s-block up-hor">
+		<div class="nn-card-set">
+		<a href="https://intertradebd.com/services/subcategory/50/mill-scale">
+			<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/SteelWaste/5. Mill Scale.jpg') }}" alt="service" class="img-fluid" /></div>
+			<div class="p-3">
+				<h6>Mill Scale</h6>
+				Learn More <i class="fas fa-chevron-right fa-icon"></i>
+			</div>
+		</a>
+		</div>
+	</div>
+</div>
+{{-- end SteelWaste product 5  --}}
+
+{{-- SteelWaste product 6  --}}
+<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+	<div class="s-block up-hor">
+		<div class="nn-card-set">
+		<a href="https://intertradebd.com/services/subcategory/50/mill-scale">
+			<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/SteelWaste/6. Test Report Mill Scale.jpeg') }}" alt="service" class="img-fluid" /></div>
+			<div class="p-3">
+				<h6>Test Report Mill Scale</h6>
+				Learn More <i class="fas fa-chevron-right fa-icon"></i>
+			</div>
+		</a>
+		</div>
+	</div>
+</div>
+{{-- end SteelWaste product 6  --}}
+
+{{-- SteelWaste product 7  --}}
+<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+	<div class="s-block up-hor">
+		<div class="nn-card-set">
+		<a href="https://intertradebd.com/services/subcategory/51/iron-red-oxide">
+			<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/SteelWaste/7. Iron Red Oxide.jpg') }}" alt="service" class="img-fluid" /></div>
+			<div class="p-3">
+				<h6>Iron Red Oxide</h6>
+				Learn More <i class="fas fa-chevron-right fa-icon"></i>
+			</div>
+		</a>
+		</div>
+	</div>
+</div>
+{{-- end SteelWaste product 7  --}}
+
+
+{{-- SteelWaste product 8  --}}
+<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+	<div class="s-block up-hor">
+		<div class="nn-card-set">
+		<a href="https://intertradebd.com/services/subcategory/51/iron-red-oxide">
+			<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/SteelWaste/8. Test Report Red Oxide.jpg') }}" alt="service" class="img-fluid" /></div>
+			<div class="p-3">
+				<h6>Test Report Red Oxide</h6>
+				Learn More <i class="fas fa-chevron-right fa-icon"></i>
+			</div>
+		</a>
+		</div>
+	</div>
+</div>
+{{-- end SteelWaste product 8  --}}
+
+					{{--  @endforeach  --}}
 
 				</div>
 			</div>
@@ -192,15 +345,9 @@ CELL: +8801535880909
 
 		</section>
 
-
-
-
-
 		{{-- end steel melll waste --}}
 
-
-
-{{-- startInfinite shapping --}}
+{{-- start Steel Scrap --}}
 
 <section class="dg-service2 pb120 pt0" id="services">
 	<div class="container">
@@ -208,32 +355,158 @@ CELL: +8801535880909
 						<div class="col-lg-6">
 							<div class="common-heading ptag">
 
-								<h2>Infinite shapping</h2>
+								<h2>Steel Scrap</h2>
 
 							</div>
 						</div>
 					</div>
 		<div class="row upset ">
 
-			@php
-			$services = App\Models\Services::where('category_id','21')->limit(4)->get();
-			@endphp
+			{{--  @php
+			$services = App\Models\Services::where('category_id','23')->limit(4)->get();
+			@endphp  --}}
 
-		@foreach($services as $item)
+		{{--  @foreach($services as $item)  --}}
+
+		{{--  Steel Scrap product 1  --}}
 			<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
 				<div class="s-block up-hor">
 					<div class="nn-card-set">
-					<a href="{{ url('services/details/'.$item->id.'/'.$item->content_title ) }}">
-						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset($item->thamble) }}" alt="service" class="img-fluid" /></div>
+					<a href="https://intertradebd.com/services/subcategory/58/hms-scrap">
+						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/Scrap/1. HMS (1).jpg') }}" alt="service" class="img-fluid" /></div>
 						<div class="p-3">
-							<h6>{{ $item->content_title}}</h6>
+							<h6> HMS </h6>
 							Learn More <i class="fas fa-chevron-right fa-icon"></i>
 						</div>
 					</a>
 					</div>
 				</div>
 			</div>
-			@endforeach
+	{{-- end Steel Scrap product 1  --}}
+
+	{{--  Steel Scrap product 2  --}}
+	<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+		<div class="s-block up-hor">
+			<div class="nn-card-set">
+			<a href="https://intertradebd.com/services/subcategory/58/hms-scrap">
+				<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/Scrap/2. HMS.jpg') }}" alt="service" class="img-fluid" /></div>
+				<div class="p-3">
+					<h6> HMS </h6>
+					Learn More <i class="fas fa-chevron-right fa-icon"></i>
+				</div>
+			</a>
+			</div>
+		</div>
+	</div>
+{{-- end Steel Scrap product 2  --}}
+
+	{{--  Steel Scrap product 3  --}}
+	<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+		<div class="s-block up-hor">
+			<div class="nn-card-set">
+			<a href="https://intertradebd.com/services/subcategory/56/abc-scrap">
+				<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/Scrap/3. Aluminium.jpg') }}" alt="service" class="img-fluid" /></div>
+				<div class="p-3">
+					<h6>Aluminium</h6>
+					Learn More <i class="fas fa-chevron-right fa-icon"></i>
+				</div>
+			</a>
+			</div>
+		</div>
+	</div>
+{{-- end Steel Scrap product 3  --}}
+
+{{--  Steel Scrap product 4  --}}
+<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+	<div class="s-block up-hor">
+		<div class="nn-card-set">
+		<a href="https://intertradebd.com/services/subcategory/56/abc-scrap">
+			<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/Scrap/4. Brass.jpg') }}" alt="service" class="img-fluid" /></div>
+			<div class="p-3">
+				<h6>Brass</h6>
+				Learn More <i class="fas fa-chevron-right fa-icon"></i>
+			</div>
+		</a>
+		</div>
+	</div>
+</div>
+{{-- end Steel Scrap product 4  --}}
+
+{{--  Steel Scrap product 5  --}}
+<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+	<div class="s-block up-hor">
+		<div class="nn-card-set">
+		<a href="https://intertradebd.com/services/subcategory/56/abc-scrap">
+			<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/Scrap/5. Copper.jpg') }}" alt="service" class="img-fluid" /></div>
+			<div class="p-3">
+				<h6>Copper</h6>
+				Learn More <i class="fas fa-chevron-right fa-icon"></i>
+			</div>
+		</a>
+		</div>
+	</div>
+</div>
+{{-- end Steel Scrap product 5  --}}
+
+{{--  Steel Scrap product 6  --}}
+<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+	<div class="s-block up-hor">
+		<div class="nn-card-set">
+		<a href="https://intertradebd.com/services/subcategory/56/abc-scrap">
+			<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/Scrap/6. Stainless Steel.jpg') }}" alt="service" class="img-fluid" /></div>
+			<div class="p-3">
+				<h6>Stainless Steel</h6>
+				Learn More <i class="fas fa-chevron-right fa-icon"></i>
+			</div>
+		</a>
+		</div>
+	</div>
+</div>
+{{-- end Steel Scrap product 6  --}}
+
+{{--  Steel Scrap product 7  --}}
+<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+	<div class="s-block up-hor">
+		<div class="nn-card-set">
+		<a href="https://intertradebd.com/services/subcategory/56/abc-scrap">
+			<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/Scrap/7 .jpeg') }}" alt="service" class="img-fluid" /></div>
+			<div class="p-3">
+				<h6>Cast iron engine block</h6>
+				Learn More <i class="fas fa-chevron-right fa-icon"></i>
+			</div>
+		</a>
+		</div>
+	</div>
+</div>
+{{-- end Steel Scrap product 7  --}}
+
+
+{{--  Steel Scrap product 8  --}}
+<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+	<div class="s-block up-hor">
+		<div class="nn-card-set">
+		<a href="https://intertradebd.com/services/subcategory/56/abc-scrap">
+			<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/Scrap/8.jpeg') }}" alt="service" class="img-fluid" /></div>
+			<div class="p-3">
+				<h6>Cast iron drum</h6>
+				Learn More <i class="fas fa-chevron-right fa-icon"></i>
+			</div>
+		</a>
+		</div>
+	</div>
+</div>
+{{-- end Steel Scrap product 8  --}}
+
+
+
+
+
+
+
+
+
+
+			{{--  @endforeach  --}}
 
 		</div>
 	</div>
@@ -241,7 +514,7 @@ CELL: +8801535880909
 
 </section>
 
-{{-- end Infinite shapping --}}
+{{-- end Steel Scrap --}}
 
 
 {{-- start abid argro --}}
@@ -259,25 +532,145 @@ CELL: +8801535880909
 					</div>
 		<div class="row upset ">
 
-			@php
+			{{--  @php
 			$services = App\Models\Services::where('category_id','22')->limit(4)->get();
-			@endphp
+			@endphp  --}}
 
-		@foreach($services as $item)
+		{{--  @foreach($services as $item)  --}}
+
+		{{--  Abid agro product 1  --}}
 			<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
 				<div class="s-block up-hor">
 					<div class="nn-card-set">
-					<a href="{{ url('services/details/'.$item->id.'/'.$item->content_title ) }}">
-						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset($item->thamble) }}" alt="service" class="img-fluid" /></div>
+					<a href="https://intertradebd.com/services/subcategory/54/fresh-vegetable">
+						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/AbidAgro/1. Vegetable Dharosh.jpeg') }}" alt="service" class="img-fluid" /></div>
 						<div class="p-3">
-							<h6>{{ $item->content_title}}</h6>
+							<h6>Vegetable Dharosh</h6>
 							Learn More <i class="fas fa-chevron-right fa-icon"></i>
 						</div>
 					</a>
 					</div>
 				</div>
 			</div>
-			@endforeach
+			{{-- end Abid agro product 1  --}}
+
+{{--  Abid agro product 2  --}}
+<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+	<div class="s-block up-hor">
+		<div class="nn-card-set">
+		<a href="https://intertradebd.com/services/subcategory/54/fresh-vegetable">
+			<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/AbidAgro/2. Korola.jpeg') }}" alt="service" class="img-fluid" /></div>
+			<div class="p-3">
+				<h6>Korola</h6>
+				Learn More <i class="fas fa-chevron-right fa-icon"></i>
+			</div>
+		</a>
+		</div>
+	</div>
+</div>
+{{-- end Abid agro product 2  --}}
+
+{{--  Abid agro product 3  --}}
+<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+	<div class="s-block up-hor">
+		<div class="nn-card-set">
+		<a href="https://intertradebd.com/services/subcategory/52/fish">
+			<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/AbidAgro/3. Fish -Baila.jpeg') }}" alt="service" class="img-fluid" /></div>
+			<div class="p-3">
+				<h6>Fish Baila</h6>
+				Learn More <i class="fas fa-chevron-right fa-icon"></i>
+			</div>
+		</a>
+		</div>
+	</div>
+</div>
+{{-- end Abid agro product 3  --}}
+
+
+{{--  Abid agro product 4  --}}
+<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+	<div class="s-block up-hor">
+		<div class="nn-card-set">
+		<a href="https://intertradebd.com/services/subcategory/52/fish">
+			<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/AbidAgro/4. Fish-Elish.jpeg') }}" alt="service" class="img-fluid" /></div>
+			<div class="p-3">
+				<h6>Fish Elish</h6>
+				Learn More <i class="fas fa-chevron-right fa-icon"></i>
+			</div>
+		</a>
+		</div>
+	</div>
+</div>
+{{-- end Abid agro product 4  --}}
+
+
+{{--  Abid agro product 5  --}}
+<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+	<div class="s-block up-hor">
+		<div class="nn-card-set">
+		<a href="https://intertradebd.com/services/subcategory/55/potato">
+			<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/AbidAgro/5. Potato.jpg') }}" alt="service" class="img-fluid" /></div>
+			<div class="p-3">
+				<h6> Potato</h6>
+				Learn More <i class="fas fa-chevron-right fa-icon"></i>
+			</div>
+		</a>
+		</div>
+	</div>
+</div>
+{{-- end Abid agro product 5  --}}
+
+
+{{--  Abid agro product 6  --}}
+<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+	<div class="s-block up-hor">
+		<div class="nn-card-set">
+		<a href="https://intertradebd.com/services/subcategory/55/potato">
+			<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/AbidAgro/6. Potato.jpg') }}" alt="service" class="img-fluid" /></div>
+			<div class="p-3">
+				<h6> Potato</h6>
+				Learn More <i class="fas fa-chevron-right fa-icon"></i>
+			</div>
+		</a>
+		</div>
+	</div>
+</div>
+{{-- end Abid agro product 6  --}}
+
+
+{{--  Abid agro product 7  --}}
+<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+	<div class="s-block up-hor">
+		<div class="nn-card-set">
+		<a href="https://intertradebd.com/services/subcategory/53/fish-scale">
+			<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/AbidAgro/7. Fish Scale.jpg') }}" alt="service" class="img-fluid" /></div>
+			<div class="p-3">
+				<h6>Fish Scale</h6>
+				Learn More <i class="fas fa-chevron-right fa-icon"></i>
+			</div>
+		</a>
+		</div>
+	</div>
+</div>
+{{-- end Abid agro product 7  --}}
+
+{{--  Abid agro product 8  --}}
+<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+	<div class="s-block up-hor">
+		<div class="nn-card-set">
+		<a href="https://intertradebd.com/services/subcategory/53/fish-scale">
+			<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/AbidAgro/8. Fish Scale.jpg') }}" alt="service" class="img-fluid" /></div>
+			<div class="p-3">
+				<h6>Fish Scale</h6>
+				Learn More <i class="fas fa-chevron-right fa-icon"></i>
+			</div>
+		</a>
+		</div>
+	</div>
+</div>
+{{-- end Abid agro product 8  --}}
+
+			{{--  @endforeach  --}}
 
 		</div>
 	</div>
@@ -287,14 +680,7 @@ CELL: +8801535880909
 
 {{-- end abid agro --}}
 
-
-
-
-
-
-
-
-{{-- start Steel Scrap --}}
+{{-- start Kazi Fashion RMG Stock Lot --}}
 
 <section class="dg-service2 pb120 pt0" id="services">
 	<div class="container">
@@ -302,32 +688,150 @@ CELL: +8801535880909
 						<div class="col-lg-6">
 							<div class="common-heading ptag">
 
-								<h2>Steel Scrap</h2>
+								<h2>KAZI FASHION HOUSE (RMG)
+                                    STOCK LOT</h2>
 
 							</div>
 						</div>
 					</div>
 		<div class="row upset ">
 
-			@php
-			$services = App\Models\Services::where('category_id','23')->limit(4)->get();
-			@endphp
+			{{--  @php
+			$services = App\Models\Services::where('category_id','25')->limit(4)->get();
+			@endphp  --}}
 
-		@foreach($services as $item)
+		{{--  @foreach($services as $item)  --}}
+
+		{{--  KAZI FASHION HOUSE product 1  --}}
 			<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
 				<div class="s-block up-hor">
 					<div class="nn-card-set">
-					<a href="{{ url('services/details/'.$item->id.'/'.$item->content_title ) }}">
-						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset($item->thamble) }}" alt="service" class="img-fluid" /></div>
+					<a href="https://intertradebd.com/frontend/category/25">
+						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/KaziFashion/1. T-Shirt.jpg') }}" alt="service" class="img-fluid" /></div>
 						<div class="p-3">
-							<h6>{{ $item->content_title}}</h6>
+							<h6> T-Shirt</h6>
 							Learn More <i class="fas fa-chevron-right fa-icon"></i>
 						</div>
 					</a>
 					</div>
 				</div>
 			</div>
-			@endforeach
+			{{-- end KAZI FASHION HOUSE product 1  --}}
+
+			{{--  KAZI FASHION HOUSE product 2  --}}
+			<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+				<div class="s-block up-hor">
+					<div class="nn-card-set">
+					<a href="https://intertradebd.com/frontend/category/25">
+						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/KaziFashion/2. T-Shirt.jpg') }}" alt="service" class="img-fluid" /></div>
+						<div class="p-3">
+							<h6>T-Shirt</h6>
+							Learn More <i class="fas fa-chevron-right fa-icon"></i>
+						</div>
+					</a>
+					</div>
+				</div>
+			</div>
+			{{-- end KAZI FASHION HOUSE product 2  --}}
+
+			{{--  KAZI FASHION HOUSE product 3  --}}
+			<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+				<div class="s-block up-hor">
+					<div class="nn-card-set">
+					<a href="https://intertradebd.com/frontend/category/25">
+						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/KaziFashion/3. Ladis Dress,a.jpg') }}" alt="service" class="img-fluid" /></div>
+						<div class="p-3">
+							<h6> Ladis Dress</h6>
+							Learn More <i class="fas fa-chevron-right fa-icon"></i>
+						</div>
+					</a>
+					</div>
+				</div>
+			</div>
+			{{-- end KAZI FASHION HOUSE product 3  --}}
+
+			{{--  KAZI FASHION HOUSE product 4  --}}
+			<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+				<div class="s-block up-hor">
+					<div class="nn-card-set">
+					<a href="https://intertradebd.com/frontend/category/25">
+						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/KaziFashion/3. Ladis Dress,b.jpg') }}" alt="service" class="img-fluid" /></div>
+						<div class="p-3">
+							<h6> Ladis Dress</h6>
+							Learn More <i class="fas fa-chevron-right fa-icon"></i>
+						</div>
+					</a>
+					</div>
+				</div>
+			</div>
+			{{-- end KAZI FASHION HOUSE product 4  --}}
+
+			{{--  KAZI FASHION HOUSE product 5  --}}
+			<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+				<div class="s-block up-hor">
+					<div class="nn-card-set">
+					<a href="https://intertradebd.com/frontend/category/25">
+						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/KaziFashion/5.Manundeware.jpg') }}" alt="service" class="img-fluid" /></div>
+						<div class="p-3">
+							<h6>  Man's undeware </h6>
+							Learn More <i class="fas fa-chevron-right fa-icon"></i>
+						</div>
+					</a>
+					</div>
+				</div>
+			</div>
+			{{-- end KAZI FASHION HOUSE product 5  --}}
+
+			{{--  KAZI FASHION HOUSE product 6  --}}
+			<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+				<div class="s-block up-hor">
+					<div class="nn-card-set">
+					<a href="https://intertradebd.com/frontend/category/25">
+						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/KaziFashion/6.ManTrouser.jpg') }}" alt="service" class="img-fluid" /></div>
+						<div class="p-3">
+							<h6> ManTrouser </h6>
+							Learn More <i class="fas fa-chevron-right fa-icon"></i>
+						</div>
+					</a>
+					</div>
+				</div>
+			</div>
+			{{-- end KAZI FASHION HOUSE product 6  --}}
+
+			{{--  KAZI FASHION HOUSE product 7  --}}
+			<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+				<div class="s-block up-hor">
+					<div class="nn-card-set">
+					<a href="https://intertradebd.com/frontend/category/25">
+						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/KaziFashion/7. Ladis Jumper.jpg') }}" alt="service" class="img-fluid" /></div>
+						<div class="p-3">
+							<h6> Ladis Jumper </h6>
+							Learn More <i class="fas fa-chevron-right fa-icon"></i>
+						</div>
+					</a>
+					</div>
+				</div>
+			</div>
+			{{-- end KAZI FASHION HOUSE product 7  --}}
+
+			{{--  KAZI FASHION HOUSE product 8  --}}
+			<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+				<div class="s-block up-hor">
+					<div class="nn-card-set">
+					<a href="https://intertradebd.com/frontend/category/25">
+						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/KaziFashion/8. Ladis Jumperca.jpg') }}" alt="service" class="img-fluid" /></div>
+						<div class="p-3">
+							<h6>  Ladis Jumperca </h6>
+							Learn More <i class="fas fa-chevron-right fa-icon"></i>
+						</div>
+					</a>
+					</div>
+				</div>
+			</div>
+			{{-- end KAZI FASHION HOUSE product 8  --}}
+
+
+			{{--  @endforeach  --}}
 
 		</div>
 	</div>
@@ -335,8 +839,7 @@ CELL: +8801535880909
 
 </section>
 
-{{-- end Steel Scrap --}}
-
+{{-- end Kazi Fashion RMG Stock Lot --}}
 
 
 {{-- start Kazi Auto Cars --}}
@@ -354,25 +857,87 @@ CELL: +8801535880909
 					</div>
 		<div class="row upset ">
 
-			@php
+			{{--  @php
 			$services = App\Models\Services::where('category_id','24')->limit(4)->get();
-			@endphp
+			@endphp  --}}
 
-		@foreach($services as $item)
+		{{--  @foreach($services as $item)  --}}
+
+
+		{{-- Kazi Auto Cars product 1 --}}
+
 			<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
 				<div class="s-block up-hor">
 					<div class="nn-card-set">
-					<a href="{{ url('services/details/'.$item->id.'/'.$item->content_title ) }}">
-						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset($item->thamble) }}" alt="service" class="img-fluid" /></div>
+					<a href="https://intertradebd.com/services/subcategory/59/kazi-auto-cars">
+						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/KaziAutoCars/Harier 2021.jpeg') }}" alt="service" class="img-fluid" /></div>
 						<div class="p-3">
-							<h6>{{ $item->content_title}}</h6>
+							<h6>Harier 2021</h6>
 							Learn More <i class="fas fa-chevron-right fa-icon"></i>
 						</div>
 					</a>
 					</div>
 				</div>
 			</div>
-			@endforeach
+
+			{{-- end Kazi Auto Cars product 1  --}}
+
+			{{-- Kazi Auto Cars product 2 --}}
+
+			<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+				<div class="s-block up-hor">
+					<div class="nn-card-set">
+					<a href="https://intertradebd.com/services/subcategory/59/kazi-auto-cars">
+						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/KaziAutoCars/Prado 2022.jpeg') }}" alt="service" class="img-fluid" /></div>
+						<div class="p-3">
+							<h6>Prado 2022</h6>
+							Learn More <i class="fas fa-chevron-right fa-icon"></i>
+						</div>
+					</a>
+					</div>
+				</div>
+			</div>
+
+			{{-- end Kazi Auto Cars product 2  --}}
+
+			{{-- Kazi Auto Cars product 3 --}}
+
+			<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+				<div class="s-block up-hor">
+					<div class="nn-card-set">
+					<a href="https://intertradebd.com/services/subcategory/59/kazi-auto-cars">
+						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/KaziAutoCars/Premio 2021.jpeg') }}" alt="service" class="img-fluid" /></div>
+						<div class="p-3">
+							<h6>Premio 2021</h6>
+							Learn More <i class="fas fa-chevron-right fa-icon"></i>
+						</div>
+					</a>
+					</div>
+				</div>
+			</div>
+
+			{{-- end Kazi Auto Cars product 3  --}}
+
+			{{-- Kazi Auto Cars product 4 --}}
+
+			<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+				<div class="s-block up-hor">
+					<div class="nn-card-set">
+					<a href="https://intertradebd.com/services/subcategory/59/kazi-auto-cars">
+						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/KaziAutoCars/X-Trail 2022.jpeg') }}" alt="service" class="img-fluid" /></div>
+						<div class="p-3">
+							<h6>X-Trail 2022</h6>
+							Learn More <i class="fas fa-chevron-right fa-icon"></i>
+						</div>
+					</a>
+					</div>
+				</div>
+			</div>
+
+			{{-- end Kazi Auto Cars product 4  --}}
+
+
+			{{--  @endforeach  --}}
 
 		</div>
 	</div>
@@ -384,8 +949,7 @@ CELL: +8801535880909
 
 
 
-
-{{-- start Kazi Fashion RMG Stock Lot --}}
+{{-- startInfinite shapping --}}
 
 <section class="dg-service2 pb120 pt0" id="services">
 	<div class="container">
@@ -393,32 +957,96 @@ CELL: +8801535880909
 						<div class="col-lg-6">
 							<div class="common-heading ptag">
 
-								<h2>Kazi Fashion RMG Stock Lot</h2>
+								<h2>INFINITE SHIPPING & LOGISTICS</h2>
 
 							</div>
 						</div>
 					</div>
 		<div class="row upset ">
 
-			@php
-			$services = App\Models\Services::where('category_id','25')->limit(4)->get();
-			@endphp
+			{{--  @php
+			$services = App\Models\Services::where('category_id','21')->limit(4)->get();
+			@endphp  --}}
 
-		@foreach($services as $item)
+		{{--  @foreach($services as $item)  --}}
+
+		{{--  INFINITE product 1  --}}
 			<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
 				<div class="s-block up-hor">
 					<div class="nn-card-set">
-					<a href="{{ url('services/details/'.$item->id.'/'.$item->content_title ) }}">
-						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset($item->thamble) }}" alt="service" class="img-fluid" /></div>
+					<a href="https://intertradebd.com/frontend/category/21">
+						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/InfiniteShipping/Container Handling.jpeg') }}" alt="service" class="img-fluid" /></div>
 						<div class="p-3">
-							<h6>{{ $item->content_title}}</h6>
+							<h6>Container Handling</h6>
 							Learn More <i class="fas fa-chevron-right fa-icon"></i>
 						</div>
 					</a>
 					</div>
 				</div>
 			</div>
-			@endforeach
+			{{-- end INFINITE product 1  --}}
+
+			{{--  INFINITE product 2  --}}
+			<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+				<div class="s-block up-hor">
+					<div class="nn-card-set">
+					<a href="https://intertradebd.com/frontend/category/21">
+						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/InfiniteShipping/Port Operation.jpeg') }}" alt="service" class="img-fluid" /></div>
+						<div class="p-3">
+							<h6>Port Operation</h6>
+							Learn More <i class="fas fa-chevron-right fa-icon"></i>
+						</div>
+					</a>
+					</div>
+				</div>
+			</div>
+			{{-- end INFINITE product 2  --}}
+
+
+
+
+			{{--  INFINITE product 3  --}}
+			<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+				<div class="s-block up-hor">
+					<div class="nn-card-set">
+					<a href="https://intertradebd.com/frontend/category/21">
+						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/InfiniteShipping/Trailor delivery.jpeg') }}" alt="service" class="img-fluid" /></div>
+						<div class="p-3">
+							<h6>Trailor delivery</h6>
+							Learn More <i class="fas fa-chevron-right fa-icon"></i>
+						</div>
+					</a>
+					</div>
+				</div>
+			</div>
+			{{-- end INFINITE product 3  --}}
+
+			{{--  INFINITE product 4  --}}
+			<div class="col-lg-3 col-sm-6 mt30 wow fadeInUp" data-wow-delay=".6s">
+				<div class="s-block up-hor">
+					<div class="nn-card-set">
+					<a href="https://intertradebd.com/frontend/category/21">
+						<div class="card-icon"><img  width="917px" height="1000px" src="{{ asset('frontend/category/InfiniteShipping/Vessel Operation.jpeg') }}" alt="service" class="img-fluid" /></div>
+						<div class="p-3">
+							<h6>Vessel Operation</h6>
+							Learn More <i class="fas fa-chevron-right fa-icon"></i>
+						</div>
+					</a>
+					</div>
+				</div>
+			</div>
+			{{-- end INFINITE product 4  --}}
+
+
+
+
+
+
+
+
+
+
+			{{--  @endforeach  --}}
 
 		</div>
 	</div>
@@ -426,7 +1054,27 @@ CELL: +8801535880909
 
 </section>
 
-{{-- end Kazi Fashion RMG Stock Lot --}}
+{{-- end Infinite shapping --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -643,7 +1291,7 @@ $gallery = App\Models\Gallery::orderBy('id','desc')->limit(12)->get();
 
 		<!--About Us-->
 
-	<section class="about-dg-busign pb120 pt120 bg-light-ylo upset" id="about">
+	{{--  <section class="about-dg-busign pb120 pt120 bg-light-ylo upset" id="about">
 	<div class="up-curvs"><svg height="100" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 viewBox="0 0 1920 89.3" style="enable-background:new 0 0 1920 89.3;" xml:space="preserve" fill="#e9f5ff">
 <path d="M1919.5,89.5H-0.5c0,0,0-90,0-90c114.9,4.8,228.6,17.9,343.6,24.6c118.6,7,237.4,11.9,356.1,14.7
@@ -654,9 +1302,9 @@ c237.6,5.7,475.3,3.1,712.7-7.7c164.2-7.5,328.1-23.7,492.3-31c0.7,0,15.2-0.5,15.2
 <div class="row">
 <div class="col-lg-6 v-center">
 <div class="common-heading-2 text-l">
-<span class="text-effect-1"><strong><h4>About Us</h4></strong></span>
+<span class="text-effect-1"><strong><h4>About Us</h4></strong></span>  --}}
 {{--  <h2 class="mb20">Work Together For Success</h2>  --}}
-<p>
+{{--  <p>
     Inter Trade is a trading company operating from Chattogram, Bangladesh. We have established on 2017 for longer and closer working relationships with our clients and suppliers not only provide immediate and reliable services but also to continually exceed expectations and goals.
     We create commercial flows, import and export products, arranging and managing international projects with our partners. Supported our network, we are able to integrate all these functions with our fruitful experience. Our numerous competencies allow us to respond to the needs of industries looking for a new market. We look forward to welcoming you to our company and work to develop and enhance your current business in Bangladesh.
 </p>
@@ -698,11 +1346,11 @@ c237.6,5.7,475.3,3.1,712.7-7.7c164.2-7.5,328.1-23.7,492.3-31c0.7,0,15.2-0.5,15.2
 
 
         </p>
-        </div>
+        </div>  --}}
 
 
 
-</div>
+{{--  </div>
 <div class="col-lg-6 v-center">
 <img src="{{ asset('frontend/assets/images/about/about-us.png')}}" alt="img" class="img-fluid">
 </div>
@@ -717,7 +1365,7 @@ viewBox="0 0 1920 89.3" style="enable-background:new 0 0 1920 89.3;" xml:space="
 c237.6-5.7,475.3-3.1,712.7,7.7c164.2,7.5,328.1,23.7,492.3,31c0.7,0,15.2,0.5,15.2,0.6C1919.5,89.5,1919.5-0.5,1919.5-0.5z"/>
 </svg>
 </div>
-</section>
+</section>  --}}
 
 <!--end About Us-->
 

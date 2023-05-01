@@ -221,7 +221,7 @@ Route::get('/search/input', [searchController::class, 'searchInput'])->name('sea
 
 
 // Frontend Product Details Page url
-Route::get('/services/details/{id}/{slug}', [IndexController::class, 'ServicesDetails']);
+Route::get('/services/details/{id}', [IndexController::class, 'ServicesDetails'])->name('serviceDetails');
 
 // Frontend SubCategory wise Data
 Route::get('/services/subcategory/{subcat_id}/{slug}', [IndexController::class, 'SubCatWiseServices']);

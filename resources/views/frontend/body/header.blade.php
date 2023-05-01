@@ -319,7 +319,7 @@ $setting = App\Models\setting::find(1);
 <div class="menu-wrapper">
     <div class="container">
       <nav class="mainmenu d-flex justify-content-between align-items-center">
-        <a  href="{{ url('/')}}" class="navbar-brand"><img src="{{ asset($setting->logo) }}" style="height: 50px; width:100px" alt="logo"></a>
+        <a  href="{{ url('/')}}" class="navbar-brand"><img src="{{ asset($setting->logo) }}" style="height: 50px;" alt="logo"></a>
 
               <!-- Main Menu Item -->
         <div class="d-none d-md-block d-lg-block d-xl-block d-xxl-block">
@@ -353,6 +353,7 @@ $setting = App\Models\setting::find(1);
               </ul>
             </li>
             <li><a href="{{ route('contact-us')}}">Contact</a></li>
+             <li><a href="{{ route('technoval-career')}}">Career</a></li>
           </ul>
         </div>
 
@@ -416,7 +417,7 @@ $setting = App\Models\setting::find(1);
             <li><a href="{{ url('/')}}">Home</a></li>
             <li><a href="{{ route('about-us')}}">About</a></li>
 
-            <li class="has-dropdown"><div> PRODUCT </div>
+            <li class="has-dropdown"><div style="margin-left: 4px;"> PRODUCT </div>
               <ul>
                 @foreach($categories as $category)
 

@@ -15,9 +15,9 @@ $setting = App\Models\setting::find(1);
 <div class="row justify-content-between">
 <div class="col-lg-3 col-sm-6  ftr-brand-pp">
 <a class="navbar-brand mb30 mt30" href="#"> <img src="{{ asset($setting->logo) }}" alt="Logo" width="100" /></a>
-<p>We have an experienced Logistics and supply Chain team. They 
-are working at Warehouse, Container Depot and Chittagong port 
-as well. We have also a shipping and Clearing & Forwarding 
+<p>We have an experienced Logistics and supply Chain team. They
+are working at Warehouse, Container Depot and Chittagong port
+as well. We have also a shipping and Clearing & Forwarding
 team for quick material operation from Port and Custom. </p>
 <div class="ff-social-icons mt30">
 <a href="{{ $setting->facebook}}" target="blank"><i class="fab fa-facebook"></i></a>
@@ -30,6 +30,11 @@ team for quick material operation from Port and Custom. </p>
 <div class="col-lg-3 col-sm-6">
 <h5 class="mb30 mt30">CORPORATE OFFICE</h5>
 <ul class="footer-address-list ftr-details">
+
+ <li>
+        <span><i class="fas fa-map-marker-alt"></i></span>
+        <p>Address <span> {{ $setting->address }}</span></p>
+ </li>
 <li>
 <span><i class="fas fa-envelope"></i></span>
 <p>Email <span> <a href="mailto:{{ $setting->email }}">{{ $setting->email }}</a></span></p>
@@ -38,17 +43,16 @@ team for quick material operation from Port and Custom. </p>
 <span><i class="fas fa-phone-alt"></i></span>
 <p>Phone <span> <a href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a></span></p>
 </li>
-<li>
-<span><i class="fas fa-map-marker-alt"></i></span>
-<p>Address <span> {{ $setting->address }}</span></p>
-</li>
+
+
+
 </ul>
 </div>
 
 <div class="col-lg-3 col-sm-6">
 <h5 class="mb30 mt30">WARE HOUSE</h5>
 <ul class="footer-address-list link-hover">
-<li><p> 
+<li><p style="font-weight: 400;font-size: 15px;font-family: 'Open Sans', sans-serif;">
         GHORAMARA, KUMIRA, SHITAKUNDA
         IIUC AREA, MODERN BRICKS, CHATTOGRAM
         BANGLADESH
@@ -56,10 +60,10 @@ team for quick material operation from Port and Custom. </p>
 </li>
 <li>
     <span><i class="fas fa-phone-alt"></i></span>
-    <p>CELL <span> 
+    <p>CELL <span>
     <a href="tel:+880153588909 ">+880153588909 </a><br>
     </span></p>
-    
+
 </li>
 <li>WhatsApp: +880153588909</li>
 <li>WeChat: KAZI KAMRUL ISLAM/ +880153588909</li>
@@ -73,7 +77,13 @@ team for quick material operation from Port and Custom. </p>
 <h5 class="mb30 mt30">Company</h5>
 <ul class="footer-address-list link-hover">
 <li><a href="{{ route('contact-us')}}" target="_blank">Contact</a></li>
-<!--<li><a href="{{ route('technoval-career')}}">Career</a></li>-->
+
+ <!--<li><a href="{{ route('technoval-career')}}">Career</a></li>-->
+
+{{-- <li>
+     <a href="mailto:{{ $setting->email }}">Career</a>
+</li> --}}
+
 <li><a href="{{ route('privacy-view')}}">Privacy Policy</a></li>
 <li><a href="{{ route('terms-view')}}">Terms and Conditions</a></li>
 <!--<li>-->

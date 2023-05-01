@@ -7,14 +7,14 @@
 
 
 <!--Breadcrumb Area-->
-<section class="breadcrumb-area ">
+{{--  <section class="breadcrumb-area ">
     <div class="text-block">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 v-center">
             <div class="bread-inner">
               <div class="bread-menu">
-                
+
               </div>
               <div class="bread-title">
                 <h4>{{ $services->content_slide_title}}</h4>
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section>  --}}
   <!--End Breadcrumb Area-->
 
 <!--Start About-->
@@ -50,7 +50,7 @@
   <span>Overview</span>
   <h2>{{ $services->content_title}}</h2>
   <p>{{ $services->content_descrip}}</p>
-  
+
 </div>
 </div>
 
@@ -72,7 +72,7 @@
 <div class="common-heading text-l pl25">
   <span>Details</span>
   <p>{!! $services->long_descrip !!}</p>
-  
+
 </div>
 </div>
 
