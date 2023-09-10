@@ -20,16 +20,12 @@ class ClientController extends Controller
     public function StoreClient(Request $request){
 
 
-		$image = $request->file('client_logo');
-    	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-    	Image::make($image)->resize(917,1000)->save('upload/client/'.$name_gen);
-    	$save_url = 'upload/client/'.$name_gen;
+
 
 
 		Client::insert([
 			'client_title' => $request->client_title,
-			'orginal_title' => $request->orginal_title,
-			'client_logo' => $save_url,
+
       		'created_at' => Carbon::now(),
 
 
@@ -37,7 +33,7 @@ class ClientController extends Controller
 
 
 		$notification = array(
-			'message' => 'Client Inserted Successfully',
+			'message' => 'Question Inserted Successfully',
 			'alert-type' => 'success'
 		);
 
@@ -63,19 +59,14 @@ class ClientController extends Controller
         //  return $request->orginal_title;
 
 		$pro_id = $request->id;
-		$oldImage = $request->old_img;
- 		unlink($oldImage);
 
-	   $image = $request->file('client_logo');
-		   $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-		   Image::make($image)->resize(917,1000)->save('upload/client/'.$name_gen);
-		   $save_url = 'upload/client/'.$name_gen;
+
+
 
 		Client::findOrFail($pro_id)->update([
 
 			'client_title' => $request->client_title,
-			'orginal_title' =>$request->orginal_title,
-			'client_logo' => $save_url,
+
 			'created_at' => Carbon::now(),
 
 
@@ -84,7 +75,7 @@ class ClientController extends Controller
 
 
 		$notification = array(
-			'message' => 'Client Update Successfully',
+			'message' => 'Question Update Successfully',
 			'alert-type' => 'success'
 		);
 
@@ -94,13 +85,13 @@ class ClientController extends Controller
 
 	public function ClientDelete($id){
 		$clients = Client::findOrFail($id);
-		unlink($clients->client_logo);
+
 		Client::findOrFail($id)->delete();
 
 
 
 		$notification = array(
-		   'message' => 'Client Deleted Successfully',
+		   'message' => 'Question Deleted Successfully',
 		   'alert-type' => 'success'
 	   );
 

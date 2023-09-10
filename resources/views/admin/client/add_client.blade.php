@@ -32,7 +32,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Client List</h3>
+				  <h3 class="box-title">Question List</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -41,9 +41,7 @@
 						<thead>
 							<tr>
 
-								<th>Client Logo </th>
-								<th>Compant Link</th>
-	                            <th>Title</th>
+								<th>Question </th>
 								<th>Action</th>
 
 							</tr>
@@ -52,9 +50,9 @@
                            @foreach($clients as $item)
 							<tr>
 
-								<td><img src="{{ asset($item->client_logo ) }}" style="width: 60px; height: 50px;"></td>
+
 								<td>{{ $item->client_title }}</td>
-									<td>{{ $item->orginal_title}}</td>
+
 
 
 
@@ -85,7 +83,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Add Client </h3>
+				  <h3 class="box-title">Add Question </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -96,7 +94,7 @@
                 @csrf
 
 	<div class="form-group">
-					<h5> Link <span class="text-danger">*</span></h5>
+					<h5> Question <span class="text-danger">*</span></h5>
 					<div class="controls">
 					<input type="text" name="client_title" class="form-control" required="">
 					@error('client_title')
@@ -106,31 +104,9 @@
 	</div> <!---end--->
 
 
-	<div class="form-group">
-					<h5> title <span class="text-danger">*</span></h5>
-					<div class="controls">
-					<input type="text" name="orginal_title" class="form-control" required="">
-					@error('orgina_title')
-					<span class="text-danger">{{ $message }}</span>
-					@enderror
-					</div>
-	</div> <!---end--->
-
-
-                    <div class="form-group">
-	<h5>Client Logo <span class="text-danger">*</span></h5>
-	<div class="controls">
-    <input type="file" name="client_logo" class="form-control" onChange="mainThamUrl(this)" required="" >
-    @error('port_image')
-    <span class="text-danger">{{ $message }}</span>
-    @enderror
-    <img src="" id="mainThmb">
-        </div>
-    </div>
-
 
     <div class="text-xs-right">
-    <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Client">
+    <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Question">
     </div>
 
 

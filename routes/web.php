@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\IndController;
 use App\Http\Controllers\Backend\basicsettingController;
 use App\Http\Controllers\Backend\slideController;
 use App\Http\Controllers\Frontend\searchController;
+use App\Http\Controllers\Frontend\questionController;
 
 
 
@@ -324,6 +325,16 @@ Route::prefix('ind')->group(function(){
     Route::post('/update', [IndController::class, 'IndUpdate'])->name('update-ind');
 
     Route::get('/delete/{id}', [IndController::class, 'DeleteInd'])->name('delete-ind');
+
+
+});
+
+//question section
+Route::prefix('question')->group(function(){
+
+    Route::post('/add', [questionController::class, 'AddQuestion'])->name('question-store');
+
+
 
 
 });
