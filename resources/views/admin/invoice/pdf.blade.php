@@ -1,21 +1,4 @@
-{{--  <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-  </head>
-  <body>
 
-    @php
-    $invoice = App\Models\invoice::where('id',$data)->get();
-    @endphp
-
-    <h1>
-       {{  $invoice->first()->company_name }}
-    </h1>
-  </body>
-</html>  --}}
 
 
 <!DOCTYPE html>
@@ -25,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> {{ __('Billing Invoice - Webjourney') }} </title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap" rel="stylesheet">
+    <title> {{ __('Free Anxiety Rating Scale') }} </title>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -34,7 +18,7 @@
 
 <style>
     * {
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Lato', sans-serif;
         line-height: 26px;
         font-size: 15px;
     }
@@ -110,7 +94,14 @@
         padding-bottom: 10px !important;
 
     }
+
     /* invoice area */
+
+    .item-description h2 {
+        color: rgba(0,0,0, 0.5);
+        font-style: italic;
+    }
+
     .invoice-area {
         padding: 10px 0;
     }
@@ -119,7 +110,7 @@
         max-width: 650px;
         margin: 0 auto;
         box-shadow: 0 0 10px #f3f3f3;
-        padding: 0px;
+        padding: 40px;
     }
 
     .invoice-header {
@@ -129,22 +120,28 @@
     .invoice-flex-contents {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
+        flex-direction: column;
         gap: 24px;
         flex-wrap: wrap;
     }
 
     .invoice-logo {}
 
-    .invoice-logo img {}
-
-    .invoice-header-contents {
-        float: right;
+    .invoice-logo img {
+        border-radius: 50%;
+        width: 150px;
     }
 
-    .invoice-header-contents .invoice-title {
-        font-size: 40px;
-        font-weight: 700;
+    .invoice-header-contents h4{
+        font-size: 14px;
+        color: rgba(0,0,0, 0.8);
+    }
+
+    .invoice-header-contents {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 3px solid #FDD700;
     }
 
     .invoice-details {
@@ -309,167 +306,135 @@
 
 
 <!-- Invoice area Starts -->
-<div class="invoice-area">
+
+ <div class="invoice-area">
     <div class="invoice-wrapper">
         <div class="invoice-header">
             <div class="invoice-flex-contents">
                 <div class="invoice-logo">
-                    <img src="" alt="">
+                    <img src="{{ asset('frontend\assets\img\logo.jpg') }}" width="150px" alt="">
                 </div>
-                <div class="invoice-header-contents" style="float:right;margin-top:-120px;">
+            </div>
+@php
+    $data = App\Models\questiondata::find($id);
 
-                    <h5>invoice</h5>
-                    {{ $total }}
-                </div>
+@endphp
+            <div class="invoice-header-contents">
+                <h4 class="name">{{ __('Name') }}: {{ $data->name }}</h4>
+                <h4>{{ __('Email') }} :{{ $data->email }}</h4>
+                <h4>{{ __('Phone') }}: {{ $data->phone}}</h4>
+                <h4>{{ __('Age') }}:{{ $data->age}} </h4>
             </div>
         </div>
-        <div class="invoice-details">
-            <div class="invoice-details-flex">
-                <div class="invoice-single-details">
-                    <h4 class="invoice-details-title">{{ __('Bill To:') }}</h4>
-                    <ul class="details-list">
-                        <li class="list">  </li>
-                        <li class="list"> <a href="#"></a> </li>
-                        <li class="list"> <a href="#"></a> </li>
-                        <li class="list"> invoice:<a href="#"></a> </li>
-                        <li class="list">order: <a href="#"></a> </li>
-                    </ul>
-                </div>
-                <div class="invoice-single-details" style="float:right;margin-top:-120px;">
-                    <h4 class="invoice-details-title">{{ __('Ship To:') }}</h4>
-                    <ul class="details-list">
-                        <li class="list"> <strong>{{ __('City') }}: </strong> {{ __('Dhaka 1215') }} </li>
-                        <li class="list"> <strong>{{ __('Area') }}: </strong> {{ __('Farmgate') }} </li>
-                        <li class="list"> <strong>{{ __('Address') }}: </strong>{{ __('149/A, Baitush Sharaf Mosjid')  }} </li>
-                        <li class="list"> <strong>{{ __('Bank Account no') }}: </strong> </li>
-                        <li class="list"> <strong>{{ __('Bank routing') }}: </strong></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+
 
         <div class="item-description">
-            <h5 class="table-title">{{ __('Include Services') }}</h5>
+            <h5 class="table-title"> {{ $data->total_score}} - Anxiety Disorder</h5>
             <table class="custom--table">
-                <thead>
-                <tr>
-                    <th>{{ __('Title') }}</th>
-                    <th>{{ __('Unit Price')  }}</th>
-                    <th>{{ __('Quantity') }}</th>
-                    <th>{{ __('duration') }}</th>
-                    <th>{{ __('amount') }}</th>
-                    <th>{{ __('Total')  }}</th>
-                </tr>
-                </thead>
                 <tbody>
-                <tr>
 
-
-
-
-                </tr>
                 <tr class="table_footer_row">
-                    <td colspan="3"><strong>{{ __('Package Fee') }}</strong></td>
-                    <td><strong></strong></td>
+                    <h2>A total score of ≥ 23 may indicate the presence of an Anxiety Disorder </h2>
                 </tr>
                 </tbody>
             </table>
         </div>
 
-        {{--  <div class="item-description">
-            <div class="table-responsive">
-                <h5 class="table-title"> {{ __('Additional Services') }} </h5>
-                <table class="custom--table">
-                    <thead class="head-bg">
-                    <tr>
-                        <th>{{ __('Title') }}</th>
-                        <th>{{ __('Unit Price') }}</th>
-                        <th>{{ __('Quantity') }}</th>
-                        <th>{{ __('Total') }}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>{{ __('Car Cleaning') }}</td>
-                        <td>$20</td>
-                        <td>2</td>
-                        <td>$40</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"><strong>{{ __('Extra Service') }}</strong></td>
-                        <td><strong>$10</strong></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>  --}}
-
-        {{--  <div class="item-description page_break">
-            <div class="table-responsive table-responsive--md">
-                <h5 class="table-title"> {{ __('Coupon Details') }} </h5>
-                <table class="custom--table">
-                    <thead class="head-bg">
-                    <tr>
-                        <th>{{ __('Coupon Code') }}</th>
-                        <th>{{ __('Coupon Type') }}</th>
-                        <th>{{ __('Coupon Amount') }}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>{{ __('Webjourney') }}</td>
-                        <td>{{ __('Percentage') }}</td>
-                        <td>$10</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>  --}}
-
         <div class="item-description">
-            <div class="table-responsive">
-                <h5 class="table-title">{{ __('Orders Details') }}</h5>
-                <table class="custom--table">
-                    <thead class="head-bg">
-                    <tr>
-                        <th>{{ __('Buyer Details') }}</th>
-                        <th>{{ __('Date & Schedule') }}</th>
-                        <th>{{ __('Amount Details') }}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <span class="data-span"> {{ __('Name: ') }}</span>{{  $id}} <br>
-                            <span class="data-span"> {{ __('Email: ') }}</span> <br>
-                            <span class="data-span"> {{ __('Phone: ') }}<br>
-                            <span class="data-span"> {{ __('Address: ') }}</span>
-                            <span class="data-span"> {{ __('Reffer name : ') }}</span>
-                        </td>
-                        <td>
+            <h5 class="table-title"> {{ $data->PanicDisorder_score}}- Panic Disorder or Significant Somatic Symptoms</h5>
+            <table class="custom--table">
+                <tbody>
 
-                            {{--  {{ __('Fri, 10pm') }}  --}}
-                        </td>
-                        <td>
-
-                            <span class="data-span"> {{ __('unit price:') }} </span> <br>
-                            <span class="data-span"> {{ __('Amount:') }} </span><br>
-                            <span class="data-span"> {{ __('Total:') }} </span><br>
-
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+                <tr class="table_footer_row">
+                    <h2>A score of 5 for items 1,2,6,9,11,12,15,17,18,19,22,25,28,32,36,38,40 may indicate Panic
+                        Disorder or Significant Somatic Symptoms</h2>
+                </tr>
+                </tbody>
+            </table>
         </div>
 
-        <footer>
+        <div class="item-description">
+            <h5 class="table-title"> {{ $data->Generalized_score}}- Generalized Anxiety Disorder.</h5>
+            <table class="custom--table">
+                <tbody>
 
-            <div>
-                <h4 style="background-color: #030303; color:white; text-align:center">Technoval LTD </h4>
-            </div>
-            </h3>
-        </footer>
+                <tr class="table_footer_row">
+                    <h2>A score of 12 for items 5,7,8,14,21,23,24,29,31,35,37,39,44 may indicate Generalized Anxiety Disorder.
+                        </h2>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="item-description">
+            <h5 class="table-title">{{ $data->Separation_score}} - Separation Anxiety Disorder.</h5>
+            <table class="custom--table">
+                <tbody>
+
+                <tr class="table_footer_row">
+                    <h2>A score of 3 for items 4,13,16,20,26,30,33 may indicate Separation Anxiety Disorder.</h2>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="item-description">
+            <h5 class="table-title">{{ $data->SocialPhobis_score}} - Social Phobis Disorder.</h5>
+            <table class="custom--table">
+                <tbody>
+
+                <tr class="table_footer_row">
+                    <h2>A score of 7 for items 3,10,27,34,41,42,43 may indicate Social Phobis Disorder.</h2>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        @if($data->total_score <21)
+
+
+        <div class="item-description">
+            <h5 class="table-title">Remarks</h5>
+            <table class="custom--table">
+                <tbody>
+
+                <tr class="table_footer_row">
+                    <h1 style="background-color: #FED700; color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px;">mild ( 0 -20 )</h1>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        @elseif($data->total_score >21 && $data->total_score<41)
+
+        <div class="item-description">
+            <h5 class="table-title">Remarks</h5>
+            <table class="custom--table">
+                <tbody>
+
+                <tr class="table_footer_row">
+                    <h1 style="background-color: #FED700; color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px;">moderate (21- 40 )
+                    </h1>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        @else
+
+
+        <div class="item-description">
+            <h5 class="table-title">Remarks</h5>
+            <table class="custom--table">
+                <tbody>
+
+                <tr class="table_footer_row">
+                    <h1 style="background-color: #FED700; color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px;">severe (40+ )</h1>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        @endif
 
     </div>
 </div>

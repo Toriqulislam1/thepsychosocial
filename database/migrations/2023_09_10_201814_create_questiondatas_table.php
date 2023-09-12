@@ -21,6 +21,20 @@ return new class extends Migration
             $table->integer('age');
             $table->string('address');
 
+            $table->integer('total');
+            $table->integer('PanicDisorder');
+            $table->integer('Generalized');
+            $table->integer('Separation');
+            $table->integer('SocialPhobis');
+            $table->integer('total_score')->nullable();
+            $table->integer('PanicDisorder_score')->nullable();
+            $table->integer('Generalized_score')->nullable();
+            $table->integer('SocialPhobis_score')->nullable();
+            $table->integer('Separation_score')->nullable();
+
+
+
+
             $table->timestamps();
         });
     }

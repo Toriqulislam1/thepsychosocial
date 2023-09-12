@@ -25,7 +25,8 @@
           </a>
         </li>
 
-        <li><a href="{{ route('add-client')}}"><i class="ti-more"></i>Question</a></li>
+        {{-- <li><a href="{{ route('add-client')}}"><i class="ti-more"></i>Question</a></li> --}}
+        <li><a href="{{ route('add-user')}}"><i class="ti-more"></i>User Information</a></li>
 
 		<li>
           <a href="auth_login.html">
