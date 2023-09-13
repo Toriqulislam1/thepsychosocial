@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> {{ __('Free Anxiety Rating Scale') }} </title>
+    <title>Masum Billah's - Mental Health Survey Report </title>
     <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
 </head>
@@ -368,21 +368,22 @@ $SocialPhobis= $v3+$v10+$v27+$v34+$v41+$v42+$v43;
     <div class="invoice-area">
         <div class="invoice-wrapper">
             <div class="report-header">
-                <div class="report-flex-contents">
-                    <div class="report-logo">
-                        <!-- Replace with your image URL -->
-                        <img src="https://example.com/your-image.jpg" width="150px" alt="">
-                    </div>
-                </div>
 
-
-
-                <div class="report-header-contents">
-                    <h4 class="name">{{ __('Name') }}: {{ $data->name }}</h4>
-                    <h4>{{ __('Email') }}: {{ $data->email }}</h4>
-                    <h4>{{ __('Phone') }}: {{ $data->phone}}</h4>
-                    <h4>{{ __('Age') }}: {{ $data->age}}</h4>
-                </div>
+                <table style="width: 100%; border-bottom: 2px solid #FDD700;">
+                    <tr>
+                       <th colspan="4">
+                            <div class="invoice-logo">
+                                <img src="{{ asset('frontend/assets/img/logo.jpg') }}" width="150px" alt="">
+                            </div>
+                       </th>
+                    </tr>
+                    <tr>
+                        <th style="font-size: 15px; color:rgba(0,0,0, 0.8)"><h4 class="name">{{ __('Name') }}: {{ $data->name }}</h4></th>
+                        <th style="font-size: 15px; color:rgba(0,0,0, 0.8)"><h4>{{ __('Email') }}: {{ $data->email }}</h4></th>
+                        <th style="font-size: 15px; color:rgba(0,0,0, 0.8)"><h4>{{ __('Phone') }}: {{ $data->phone}}</h4></th>
+                        <th style="font-size: 15px; color:rgba(0,0,0, 0.8)"><h4>{{ __('Age') }}: {{ $data->age}}</h4></th>
+                    </tr>
+                </table>
             </div>
 
 
@@ -513,7 +514,9 @@ $SocialPhobis= $v3+$v10+$v27+$v34+$v41+$v42+$v43;
                 <tbody>
 
                 <tr class="table_footer_row">
-                    <h1 style="background-color: #FED700; color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px;">severe (40+ )</h1>
+                    <h1 style="color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px; border: 1px solid #0b0b0b; margin-right: 5px">Milt (0-20)</h1>
+                    <h1 style="color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px; border: 1px solid #0b0b0b; margin-right: 5px">severe (20-40 )</h1>
+                    <h1 style="background-color: #FED700; color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px; margin-right: 5px">severe (40+ )</h1>
                 </tr>
                 </tbody>
             </table>
