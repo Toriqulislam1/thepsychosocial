@@ -42,34 +42,34 @@
                 <!-- Name  -->
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <input type="text" name="client_name" class="form-control form-control-lg" placeholder="Name">
+                        <input type="text" name="client_name" class="form-control form-control-lg" required placeholder="Name">
                     </div>
                 </div>
 
                 <!-- Email -->
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <input type="email" name="client_email" class="form-control form-control-lg" placeholder="Email">
+                        <input type="email" name="client_email" class="form-control form-control-lg"  required placeholder="Email">
                     </div>
                 </div>
 
                 <!-- Phone -->
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <input type="text" name="client_phone" class="form-control form-control-lg" placeholder="Phone">
+                        <input type="text" name="client_phone" class="form-control form-control-lg"  required placeholder="Phone">
                     </div>
                 </div>
 
                 <!-- Age -->
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <input type="text" name="client_age" class="form-control form-control-lg" placeholder="Age  ">
+                        <input type="text" name="client_age" class="form-control form-control-lg" required placeholder="Age  ">
                     </div>
                 </div>
 
                 <!-- Address -->
                 <div class="mb-3">
-                    <textarea class="form-control form-control-lg" id="exampleFormControlTextarea1" name="client_address" rows="3" placeholder="Address"></textarea>
+                    <textarea class="form-control form-control-lg" id="exampleFormControlTextarea1" required name="client_address" rows="3" placeholder="Address"></textarea>
                 </div>
                     {{-- decription --}}
                     <p class="fs-5 mt-3">मानिसहरूलाई कस्तो लाग्छ भनेर वर्णन गर्ने वाक्यहरूको सूची तल छ। प्रत्येक वाक्यांश पढ्नुहोस् र निर्णय गर्नुहोस् कि यो तपाइँको लागि "साँचो वा कहिलेकाहीँ सत्य होइन" वा "केहि हदसम्म सत्य वा कहिलेकाहीँ सत्य" वा "धेरै सत्य वा प्राय: सत्य" हो। त्यसपछि, प्रत्येक वाक्यको लागि, √ अहिले वा विगत 3 महिना भित्र तपाईले वर्णन गरेको प्रतिक्रियासँग मेल खाने बाकस जाँच गर्नुहोस्।</p>

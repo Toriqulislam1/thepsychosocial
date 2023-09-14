@@ -390,11 +390,24 @@ $SocialPhobis= $v3+$v10+$v27+$v34+$v41+$v42+$v43;
         <div class="item-description">
 
 
-            @if($total >=23)
-            <h5 class="table-title"> {{ $total}} - Anxiety Disorder</h5>
+            {{-- @if($total >=23)
+            <h5 class="table-title"> {{ $total}} - Anxiety Disorder </h5>
             @else
             <h5 class="table-title"> Anxiety Disorder down:{{ $total }}</h5>
+            @endif --}}
+            @if($total <21)
+
+            <h5 class="table-title"> {{ $total}} - Anxiety Disorder mild ( 0 -20 ) </h5>
+
+            @elseif($total >21 && $total<41)
+
+            <h5 class="table-title"> {{ $total}} - Anxiety Disorder moderate (21- 40 ) </h5>
+
+            @else
+            <h5 class="table-title"> {{ $total}} - Anxiety Disorder severe (40+ ) </h5>
+
             @endif
+
 
             <table class="custom--table">
                 <tbody>
