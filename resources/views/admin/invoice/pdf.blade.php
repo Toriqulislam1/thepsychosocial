@@ -74,6 +74,7 @@ $Separation = $v4+$v13+$v16+$v20+$v26+$v30+$v33;
 $SocialPhobis= $v3+$v10+$v27+$v34+$v41+$v42+$v43;
 
 
+
 @endphp
 
 
@@ -365,6 +366,7 @@ $SocialPhobis= $v3+$v10+$v27+$v34+$v41+$v42+$v43;
 
     <!-- Invoice area Starts -->
 
+
     <div class="invoice-area">
         <div class="invoice-wrapper">
             <div class="report-header">
@@ -498,11 +500,14 @@ $SocialPhobis= $v3+$v10+$v27+$v34+$v41+$v42+$v43;
                 <tbody>
 
                 <tr class="table_footer_row">
-                    <h1 style="background-color: #FED700; color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px;">mild ( 0 -20 )</h1>
+                    <h1 style=" background-color: #FED700; color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px; border: 1px solid #0b0b0b; margin-right: 5px">Milt (0-20)</h1>
+                    <h1 style=" color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px; border: 1px solid #0b0b0b; margin-right: 5px">moderator (20-40 )</h1>
+                    <h1 style=" color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px; margin-right: 5px">severe (40+ )</h1>
                 </tr>
                 </tbody>
             </table>
         </div>
+
         @elseif($total >21 && $total<41)
 
         <div class="item-description">
@@ -511,8 +516,9 @@ $SocialPhobis= $v3+$v10+$v27+$v34+$v41+$v42+$v43;
                 <tbody>
 
                 <tr class="table_footer_row">
-                    <h1 style="background-color: #FED700; color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px;">moderate (21- 40 )
-                    </h1>
+                    <h1 style="color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px; border: 1px solid #0b0b0b; margin-right: 5px">Milt (0-20)</h1>
+                    <h1 style="background-color: #FED700; color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px; border: 1px solid #0b0b0b; margin-right: 5px">moderator (20-40 )</h1>
+                    <h1 style=" color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px; margin-right: 5px">severe (40+ )</h1>
                 </tr>
                 </tbody>
             </table>
@@ -528,7 +534,7 @@ $SocialPhobis= $v3+$v10+$v27+$v34+$v41+$v42+$v43;
 
                 <tr class="table_footer_row">
                     <h1 style="color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px; border: 1px solid #0b0b0b; margin-right: 5px">Milt (0-20)</h1>
-                    <h1 style="color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px; border: 1px solid #0b0b0b; margin-right: 5px">severe (20-40 )</h1>
+                    <h1 style="color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px; border: 1px solid #0b0b0b; margin-right: 5px">moderator (20-40 )</h1>
                     <h1 style="background-color: #FED700; color: #0B0B0B; display: inline-block; padding: 5px 15px;text-transform: capitalize;font-size: 18px;border-radius: 5px; margin-right: 5px">severe (40+ )</h1>
                 </tr>
                 </tbody>
