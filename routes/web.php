@@ -336,6 +336,7 @@ Route::prefix('question')->group(function(){
     Route::get('/information', [questionController::class, 'Userinfo'])->name('add-user');
     Route::get('/user/delete/{id}', [questionController::class, 'UserDelete'])->name('client.delete');
     Route::get('/user/user/{id}', [questionController::class, 'adminPdf'])->name('admin.pdf');
+    Route::get('/user/result/{id}', [questionController::class, 'resultView'])->name('admin.view.result');
 
 
 

@@ -41,38 +41,30 @@
 						<thead>
 							<tr>
 
-								<th>name</th>
-								<th>email</th>
-								<th>phone</th>
-								<th>age</th>
-								<th>Action</th>
+								<th>SL</th>
+								<th>Question</th>
+								<th>answare</th>
+
 
 							</tr>
 						</thead>
 						<tbody>
-                           @foreach($clients as $item)
+                           {{-- @foreach($clients as $item) --}}
 							<tr>
 
 
-								<td>{{ $item->name  }}</td>
-								<td>{{ $item->email  }}</td>
-								<td>{{ $item->phone  }}</td>
-								<td>{{ $item->age  }}</td>
+								<td>1</td>
+								<td>sd</td>
+								<td>sd</td>
 
 
 
 
-								<td width="30%">
 
-                                    <a href="{{ route('client.delete',$item->id) }}" class="btn btn-danger" id="delete" title="delete"><i class="fa fa-trash"></i></a>
 
-                                    <a href="{{ route('admin.view.result',$item->id) }}" class="btn btn-danger" title="pdf"><i class="fa fa-arrow-down"></i> view </a>
-                                    <a href="{{ route('admin.pdf',$item->id) }}" class="btn btn-danger" title="pdf"><i class="fa fa-arrow-down"></i> Download</a>
-
-                                </td>
 
 							</tr>
-                           @endforeach
+                           {{-- @endforeach --}}
 
 						</tbody>
 

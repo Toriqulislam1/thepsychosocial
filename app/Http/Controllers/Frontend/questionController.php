@@ -12,7 +12,7 @@ class questionController extends Controller
 {
     function AddQuestion(Request $request){
 
-      
+
 
         $v1 = $request->qv1;
         $v2 = $request->qv2;
@@ -174,6 +174,12 @@ function adminPdf($id){
     return $pdf->stream('invoice-pdf');
 
 
+}//end
+
+function resultView($id){
+
+
+    return view('admin.user.result');
 }
 
 
