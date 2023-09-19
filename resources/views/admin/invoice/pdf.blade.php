@@ -16,10 +16,14 @@
 <body>
 
 
+
 @php
+
+$adminData = App\Models\admin::find(1);
 
 
   $data = App\Models\questiondata::find($id);
+
 
  $v1 = $data->q1;
  $v2 = $data->q2;
@@ -67,12 +71,17 @@
  $v44 = $data->q44;
 
 
-$total = $v1+$v2+$v3+$v4+$v5+$v6+$v7+$v8+$v9+$v10+$v11+$v12+$v13+$v14+$v15+$v16+$v17+$v18+$v19+$v20+$v21+$v22+$v23+$v24+$v25+$v26+$v27+$v28+$v29+$v30+$v31+$v32+$v33+$v34+$v35+$v36+$v37+$v38+$v39+$v40+$v41+$v42+$v43+$v44;
-$PanicDisorder = $v1+$v2+$v6+$v9+$v11+$v12+$v15+$v17+$v18+$v19+$v22+$v25+$v28+$v32+$v36+$v38+$v40;
-$Generalized =$v5+$v7+$v8+$v14+$v21+$v23+$v24+$v29+$v31+$v35+$v37+$v39+$v44;
-$Separation = $v4+$v13+$v16+$v20+$v26+$v30+$v33;
-$SocialPhobis= $v3+$v10+$v27+$v34+$v41+$v42+$v43;
+$total = $v1+$v2+$v3+$v4+$v5+$v6+$v7+$v8+$v9+$v10+$v11+$v12+$v13+$v14+$v15+$v16+$v17+$v18+$v19+$v20
++$v21+$v22+$v23+$v24+$v25+$v26+$v27+$v28+$v29+$v30+
+$v31+$v32+$v33+$v34+$v35+$v36+$v37+$v38+$v39+$v40+$v41+$v42+$v43+$v44;
 
+$PanicDisorder = $v1+$v2+$v6+$v9+$v11+$v12+$v15+$v17+$v18+$v19+$v22+$v25+$v28+$v32+$v36+$v38+$v40;
+
+$Generalized =$v5+$v7+$v8+$v14+$v21+$v23+$v24+$v29+$v31+$v35+$v37+$v39+$v44;
+
+$Separation = $v4+$v13+$v16+$v20+$v26+$v30+$v33;
+
+$SocialPhobis= $v3+$v10+$v27+$v34+$v41+$v42+$v43;
 
 
 @endphp
@@ -366,16 +375,19 @@ $SocialPhobis= $v3+$v10+$v27+$v34+$v41+$v42+$v43;
 
     <!-- Invoice area Starts -->
 
-
+    {{ $adminData->admin_photos }}
     <div class="invoice-area">
         <div class="invoice-wrapper">
             <div class="report-header">
 
                 <table style="width: 100%; border-bottom: 2px solid #FDD700;">
+
                     <tr>
                        <th colspan="4">
                             <div class="invoice-logo">
-                                <img src="{{ asset('frontend/assets/img/logo.jpg') }}" width="150px" alt="">
+                                
+                                <img src="{{ (!empty($adminData->admin_photos))? url('upload/admin_images/'.$adminData->admin_photos):url('upload/no_image.jpg') }}" alt="">
+
                             </div>
                        </th>
                     </tr>

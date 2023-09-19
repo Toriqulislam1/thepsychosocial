@@ -12,6 +12,8 @@ class questionController extends Controller
 {
     function AddQuestion(Request $request){
 
+      
+
         $v1 = $request->qv1;
         $v2 = $request->qv2;
         $v3 = $request->qv3;
@@ -44,7 +46,7 @@ class questionController extends Controller
         $v30 = $request->qv30;
         $v31 = $request->qv31;
         $v32 = $request->qv32;
-        $v33 = $request->qv34;
+        $v33 = $request->qv33;
         $v34 = $request->qv34;
         $v35 = $request->qv35;
         $v36= $request->qv36;
@@ -57,46 +59,6 @@ class questionController extends Controller
         $v43 = $request->qv43;
         $v44 = $request->qv44;
 
-       
-
-        // $total = $v1+$v2+$v3+$v4+$v5+$v6+$v7+$v8+$v9+$v10+$v11+$v12+$v13+$v14+$v15+$v16+$v17+$v18+$v19+$v20+$v21+$v22+$v23+$v24+$v25+$v26+$v27+$v28+$v29+$v30+$v31+$v32+$v33+$v34+$v35+$v36+$v37+$v38+$v39+$v40+$v41+$v42+$v43+$v44;
-        // $PanicDisorder = $v1+$v2+$v6+$v9+$v11+$v12+$v15+$v17+$v18+$v19+$v22+$v25+$v28+$v32+$v36+$v38+$v40;
-        // $Generalized =$v5+$v7+$v8+$v14+$v21+$v23+$v24+$v29+$v31+$v35+$v37+$v39+$v44;
-        // $Separation = $v4+$v13+$v16+$v20+$v26+$v30+$v33;
-        // $SocialPhobis= $v3+$v10+$v27+$v34+$v41+$v42+$v43;
-
-
-
-        // if($total>=23){
-        //     $total_score =$total;
-        // }else{
-        //     $total = $total;
-        // }
-
-        // if($PanicDisorder >= 5){
-        //     $PanicDisorder_score =$PanicDisorder;
-        // }else{
-        //     $PanicDisorder = $PanicDisorder;
-        // }
-
-        // if($Generalized >= 12){
-        //     $Generalized_score =$Generalized;
-        // }else{
-        //     $Generalized = $Generalized;
-        // }
-
-        // if($Separation >= 3){
-        //     $Separation_score =$Separation;
-        // }else{
-        //     $Separation = $Separation;
-        // }
-        // if($SocialPhobis >= 7){
-        //     $SocialPhobis_score =$SocialPhobis;
-        // }else{
-        //     $SocialPhobis = $SocialPhobis;
-        // }
-
-
 
 
       $id = questiondata::insertGetId([
@@ -106,19 +68,6 @@ class questionController extends Controller
             'phone' => $request->client_phone,
             'age' => $request->client_age,
             'address' => $request->client_address,
-
-            // 'total' =>$total,
-            // 'PanicDisorder' =>$PanicDisorder,
-            // 'Generalized' => $Generalized,
-            // 'Separation' =>$Separation,
-            // 'SocialPhobis' => $SocialPhobis,
-
-            // 'total_score' => $total,
-            // 'PanicDisorder_score' =>$PanicDisorder_score,
-            // 'Generalized_score' => $Generalized_score,
-            // 'SocialPhobis_score' => $SocialPhobis_score,
-            // 'Separation_score' => $Separation_score,
-
             'q1' => $v1,
             'q2' => $v2,
             'q3' => $v3,
