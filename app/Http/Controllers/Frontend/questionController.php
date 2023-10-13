@@ -178,8 +178,9 @@ function adminPdf($id){
 
 function resultView($id){
 
+    $datainfo = questiondata::find($id);
 
-    return view('admin.user.result');
+    return view('admin.user.result',['datainfo'=>$datainfo]);
 }
 
 
